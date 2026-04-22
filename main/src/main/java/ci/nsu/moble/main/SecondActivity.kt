@@ -167,7 +167,7 @@ fun HomeScreen(onNavigateToScreenOne: () -> Unit) {
                 onClick = onNavigateToScreenOne,
                 modifier = Modifier.padding(top = 16.dp)
             ) {
-                Text("Перейти на Экран 1")
+                Text("Перейти на Экран 1!@")
             }
         }
     }
