@@ -18,9 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PracticeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    HomeScreen()
                 }
             }
         }

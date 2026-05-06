@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -136,7 +136,7 @@ fun HomeScreen() {
             enabled = !viewModel.isLoading
         ) {
             Icon(
-                Icons.Filled.History,
+                Icons.Filled.Star,
                 contentDescription = null,
                 modifier = Modifier.size(18.dp)
             )
