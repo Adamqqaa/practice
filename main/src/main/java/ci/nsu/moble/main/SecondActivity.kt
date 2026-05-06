@@ -31,6 +31,7 @@ sealed class Screen(val route: String, val title: String) {
     object Home : Screen("home", "Главная")
     object ScreenOne : Screen("screen_one", "Экран 1")
     object ScreenTwo : Screen("screen_two", "Экран 2")
+
 }
 
 class SecondActivity : ComponentActivity() {
@@ -167,7 +168,7 @@ fun HomeScreen(onNavigateToScreenOne: () -> Unit) {
                 onClick = onNavigateToScreenOne,
                 modifier = Modifier.padding(top = 16.dp)
             ) {
-                Text("Перейти на Экран 1!@")
+                Text("Перейти на Экран 1")
             }
         }
     }
