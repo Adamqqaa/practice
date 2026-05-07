@@ -43,10 +43,6 @@ class CatViewModel(application: Application) : AndroidViewModel(application) {
 
             delay(300)
 
-            // Чтобы картинки были действительно разными, мы:
-            // 1. Используем параметр random
-            // 2. Немного варьируем размер (например, от 400 до 410), 
-            // так как placecats иногда кэширует результат для точных размеров.
             val seed = Random.nextInt(1000)
             val width = 400 + Random.nextInt(10)
             val height = 500 + Random.nextInt(10)
