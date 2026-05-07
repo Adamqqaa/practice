@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.util.Date
+import kotlin.random.Random
 
 data class CatUiState(
     val currentCatUrl: String = "",
@@ -30,7 +31,6 @@ class CatViewModel(application: Application) : AndroidViewModel(application) {
     val uiState: StateFlow<CatUiState> = _uiState.asStateFlow()
 
     init {
-        // Подписываемся на изменения в базе данных один раз при создании ViewModel
         observeHistory()
     }
 
@@ -43,15 +43,21 @@ class CatViewModel(application: Application) : AndroidViewModel(application) {
 
             delay(300)
 
-            val timestamp = System.currentTimeMillis()
-            val catUrl = "https://cataas.com/cat?width=400&height=500&cb=$timestamp"
+            // Чтобы картинки были действительно разными, мы:
+            // 1. Используем параметр random
+            // 2. Немного варьируем размер (например, от 400 до 410), 
+            // так как placecats иногда кэширует результат для точных размеров.
+            val seed = Random.nextInt(1000)
+            val width = 400 + Random.nextInt(10)
+            val height = 500 + Random.nextInt(10)
+            
+            val catUrl = "https://placecats.com/$width/$height?random=$seed"
 
             _uiState.value = _uiState.value.copy(
                 currentCatUrl = catUrl,
                 isLoading = false
             )
 
-            // Сохраняем в репозиторий. Flow в observeHistory заметит изменение и обновит список.
             repository.saveImage(catUrl)
         }
     }
