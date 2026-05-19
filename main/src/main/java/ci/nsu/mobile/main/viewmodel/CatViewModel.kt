@@ -43,11 +43,10 @@ class CatViewModel(application: Application) : AndroidViewModel(application) {
 
             delay(300)
 
-            val seed = Random.nextInt(1000)
             val width = 400 + Random.nextInt(10)
             val height = 500 + Random.nextInt(10)
             
-            val catUrl = "https://placecats.com/$width/$height?random=$seed"
+            val catUrl = "https://placecats.com/$width/$height"
 
             _uiState.value = _uiState.value.copy(
                 currentCatUrl = catUrl,
